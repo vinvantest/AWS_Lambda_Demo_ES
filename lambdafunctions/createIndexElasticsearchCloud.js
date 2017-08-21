@@ -4,6 +4,7 @@ const responder = require('../helper/responseFormatter.js');
 const elasticsearch = require('elasticsearch');
 
 module.exports.createIndexES = (event, context, callback) => {
+	//get lambda api event body template params
 	console.log('Body:', event.body);
 	console.log('Headers:', event.headers);
 	console.log('Method:', event.method);
@@ -31,9 +32,9 @@ module.exports.createIndexES = (event, context, callback) => {
 	var protocol = 'https';
 	var log = 'trace';
 	var hostUrls = [
-				'iad1-10914-0.es.objectrocket.com', 
-				'iad1-10914-1.es.objectrocket.com', 
-				'iad1-10914-2.es.objectrocket.com', 
+				'iad1-10914-0.es.objectrocket.com',
+				'iad1-10914-1.es.objectrocket.com',
+				'iad1-10914-2.es.objectrocket.com',
 				'iad1-10914-3.es.objectrocket.com'
 		  ]; //iad1-10914-0.es.objectrocket.com:40914,iad1-10914-1.es.objectrocket.com:40914,iad1-10914-2.es.objectrocket.com:40914,iad1-10914-3.es.objectrocket.com:40914
 	var hosts = hostUrls.map(function(host) {
@@ -63,7 +64,7 @@ module.exports.createIndexES = (event, context, callback) => {
 			})*/
 
 	 var res_msg = 'Index not created';
-	 
+
 	 console.log('Checking if index Exists('+indexName+')');
 	 esClient.indices.exists(indexName)
 		 .then(function (response) {//index exists
@@ -82,7 +83,7 @@ module.exports.createIndexES = (event, context, callback) => {
 						esClient.indices.putMapping({
 									index: indexName,
 									type: docType, //"test_type_table1"
-									body: //payload //below not required if JSON object passed to create mapping 
+									body: //payload //below not required if JSON object passed to create mapping
 										{
 										properties: {
 											title: { type: "string" },
@@ -105,7 +106,7 @@ module.exports.createIndexES = (event, context, callback) => {
 						esClient.indices.putMapping({
 									index: indexName,
 									type: docType, //"test_type_table1"
-									body: //paylod //below not required if JSON object passed to create mapping 
+									body: //paylod //below not required if JSON object passed to create mapping
 										{
 										properties: {
 											title: { type: "string" },
@@ -122,4 +123,4 @@ module.exports.createIndexES = (event, context, callback) => {
 						context.fail(responder.internalServerError('Error: elasticsearch cannot create index and put mapping!'));
 					});
 	    });//end then - indices.exists()
-}; //end module.exports   
+}; //end module.exports

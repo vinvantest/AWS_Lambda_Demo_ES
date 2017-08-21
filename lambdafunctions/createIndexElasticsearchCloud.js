@@ -36,7 +36,7 @@ module.exports.createIndexES = (event, context, callback) => {
 				'iad1-10914-1.es.objectrocket.com',
 				'iad1-10914-2.es.objectrocket.com',
 				'iad1-10914-3.es.objectrocket.com'
-		  ]; //iad1-10914-0.es.objectrocket.com:40914,iad1-10914-1.es.objectrocket.com:40914,iad1-10914-2.es.objectrocket.com:40914,iad1-10914-3.es.objectrocket.com:40914
+		  ];
 	var hosts = hostUrls.map(function(host) {
 		return {
 			protocol: protocol,

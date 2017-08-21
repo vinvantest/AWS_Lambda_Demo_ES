@@ -1,0 +1,15 @@
+{
+  "name": "es_cloud",
+  "version": "1.0.0",
+  "description": "Testing AWS Lambda for ES Cloud",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vinayak vanarse",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "elasticsearch": "^13.3.1"
+  }
+}
